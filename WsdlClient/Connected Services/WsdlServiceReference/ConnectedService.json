@@ -1,0 +1,16 @@
+{
+  "ExtendedData": {
+    "inputs": [
+      "../../../../../WSDL Service/checkDataProfileStatus_V2_WSDL.WSDL"
+    ],
+    "collectionTypes": [
+      "System.Array",
+      "System.Collections.Generic.Dictionary`2"
+    ],
+    "namespaceMappings": [
+      "*, WsdlServiceReference"
+    ],
+    "targetFramework": "net6.0",
+    "typeReuseMode": "All"
+  }
+}
