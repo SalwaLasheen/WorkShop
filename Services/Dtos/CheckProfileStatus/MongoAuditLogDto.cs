@@ -6,6 +6,7 @@ namespace Services.Dtos.CheckProfileStatus
     public class MongoAuditLogDto : IMapFrom<MongoAuditLogEntity>
     {
         public string Id { get; set; }
+        //TODO: Rename to Dial
         public string DialField { get; set; }
         public string Status { get; set; }
         public string ErrorCode { get; set; }
@@ -14,6 +15,7 @@ namespace Services.Dtos.CheckProfileStatus
         public DateTime? ResponseDate { get; set; }
         public string Request { get; set; }
         public string Response { get; set; }
-
+        //TODO: ResponsTime field to be added
+        //TODO: LATER to add field ChannelName
     }
 }

@@ -7,6 +7,8 @@ using System.Text.Json;
 
 namespace Services.Features.Concrete
 {
+    //TODO: add separate API project for Secure Solution (to be added)
+    //Business layer of WSDL [Ex: GetProfileStatusManager]
     public class ConsumeAPI : IConsumeAPI
     {
         public IMapper _mapper;
@@ -15,18 +17,33 @@ namespace Services.Features.Concrete
         {
             _mapper = mapper;
             _httpClientFactory = httpClientFactory;
-
         }
 
+        //GetDataProfileStatus
         public async Task<CheckProfileStatusResponseDto> ConsumeWsdlAPIAsync(CheckProfileStatusRequestDto requestDto)
         {
             try
             {
+                //TODO: add Inilization of Mongo Log
+
+                //TODO: adding Front or secure Urls within config files appSettings.JSON
+
+                //TODO: add in Workshop.Common ServicesUtilities manager
                 var httpClient = _httpClientFactory.CreateClient("WsdlService");
                 //requestMessage 
                 var request = HTTPRequestMessage(requestDto, httpClient);
                 var httpResponseMessage = await httpClient.SendAsync(request);
+                //TODO: add IsTestingEnvironment flag using appSettings.json
+                /*
+                 if(IsTestingEnvironment){
+                    //get respones via mocking of WorkShopResponseDataAccess manager
+                    if(mocking response == null)
+                        //call the WSDL service using WSDL factory
+                }
+                //call the WSDL service using WSDL factory
+                 */
                 //Response
+                //TODO: add in separate DAL DLL manager for Response [Ex: WorkShopResponseDataAccess]
                 var response = HandlRespons(httpResponseMessage);
                 return response;
             }
@@ -48,6 +65,7 @@ namespace Services.Features.Concrete
             return request;
         }
 
+        //TODO: check method naming "HandlRespons" to be "HandlResponse"
         private static CheckProfileStatusResponseDto HandlRespons(HttpResponseMessage response)
         {
             try
@@ -58,20 +76,16 @@ namespace Services.Features.Concrete
                 };
                 if (response.IsSuccessStatusCode)
                 {
-
                     var ObjResponse = response.Content.ReadAsStringAsync().Result;
                     var responseDto = JsonSerializer.Deserialize<CheckProfileStatusResponseDto>(ObjResponse, options);
                     return responseDto;
                 }
-
             }
             catch (Exception ex)
             {
-
                 throw new Exception(ex.Message);
             }
             return null;
         }
-
     }
 }
