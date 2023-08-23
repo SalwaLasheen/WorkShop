@@ -2,6 +2,7 @@
 
 namespace Services.Dtos.CheckProfileStatus.Request
 {
+    //TODO: to be in seperate .Models / .Entities DLL layer (For both secure & Front)
     public class CheckProfileStatusRequestDto
     {
         public string DialField { get; set; }

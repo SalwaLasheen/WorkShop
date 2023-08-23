@@ -10,6 +10,7 @@ namespace ClientService.Implementation
         {
             return checkDataProfileStatus_In.dial switch
             {
+                //TODO: to be moved to SQL DB table as mocking samples not static within the code
                 "01200000001" => Task.FromResult(ReturnWsdlStatusOut("er0000", "Success", "0", "false", "xxxx", "1", "Subscribe")),
                 "01200000002" => Task.FromResult(ReturnWsdlStatusOut("er2056", "Techincal Error", "1", "false", "xxxx", string.Empty, string.Empty)),
                 "01200000003" => Task.FromResult(ReturnWsdlStatusOut("er0000", "Success", "0", "false", "xxxx", "7", "Renew", "19", "Change Package", "5100", "Go 100")),

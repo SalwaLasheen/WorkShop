@@ -17,6 +17,7 @@ namespace Services.Features.Concrete
             _client = client;
         }
 
+        //TODO: Helper method for calling WSDL within BL manager
         public async Task<CheckProfileStatusResponseDto> CallWsdlClientAsync(CheckProfileStatusRequestDto requestDto)
         {
             try
@@ -24,6 +25,7 @@ namespace Services.Features.Concrete
 
                 var statusInRequest = AdapterRequest(requestDto);
                 var statusOutResponse = await _client.CallWSDLAsync(statusInRequest);
+                //
                 var response = AdapterResponse(statusOutResponse);
                 return response;
             }
