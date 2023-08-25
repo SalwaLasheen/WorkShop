@@ -1,0 +1,16 @@
+﻿global using AutoMapper;
+global using CommonComponent.Application.Common;
+global using CommonComponent.Application.Dtos.Request;
+global using CommonComponent.Application.Dtos.Response;
+global using CommonComponent.Application.Enums;
+global using CommonComponent.Service.Features.Interface;
+global using Microsoft.Extensions.Configuration;
+global using Microsoft.Extensions.DependencyInjection;
+global using Secure.Application.DependenecyInjection;
+global using Secure.Application.Repository.Interface;
+global using Secure.Domain.Entity;
+global using Secure.Service.Features.Concrete;
+global using Secure.Service.Features.Interface;
+global using Secure.Service.Features.Mocking;
+global using System.Reflection;
+global using WsdlServiceReference;

@@ -1,0 +1,13 @@
+﻿global using CommonComponent.Application.Dtos.Request;
+global using CommonComponent.Application.Dtos.Response;
+global using CommonComponent.Service.Features.Interface;
+global using Microsoft.AspNetCore.Builder;
+global using Microsoft.AspNetCore.Mvc;
+global using Microsoft.Extensions.DependencyInjection;
+global using Microsoft.Extensions.Hosting;
+global using Microsoft.Extensions.Options;
+global using Secure.Application.Presistence;
+global using Secure.Service.DependenecyInjection;
+global using Secure.Service.Features.Interface;
+global using System.Text.Json.Serialization;
+global using System.Threading.Tasks;

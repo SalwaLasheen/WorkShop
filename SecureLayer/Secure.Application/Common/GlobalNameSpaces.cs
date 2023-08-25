@@ -1,0 +1,9 @@
+﻿global using Microsoft.EntityFrameworkCore;
+global using Microsoft.Extensions.DependencyInjection;
+global using MongoDB.Driver;
+global using Secure.Application.Presistence;
+global using Secure.Application.Repository.Concrete;
+global using Secure.Application.Repository.Interface;
+global using Secure.Domain.Entity;
+global using Secure.Domain.Entity.Shared;
+global using System.Reflection;
