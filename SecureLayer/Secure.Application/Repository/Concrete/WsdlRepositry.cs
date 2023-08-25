@@ -32,7 +32,7 @@ namespace Secure.Application.Repository.Concrete
 
         public Task<ResponseWsdl> GetResponseByDial(string dial)
         {
-            var response = _sqlcontext.ResponseWsdls.ToList();
+            var response = _sqlcontext.ResponseWsdls.Include(x=>x.OptionsList).ToList();
             return Task.FromResult(response.FirstOrDefault());
 
         }
