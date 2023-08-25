@@ -21,10 +21,10 @@
                 if (isTetingEnv)
                 {
                     var response = GetMockWsdlResponse(requestDto);
-                    //if (response is null)
-                    //{
-                    //    return await GetWsdlResponse(requestDto);
-                    //}
+                    if (response is null)
+                    {
+                       return await GetWsdlResponse(requestDto);
+                    }
                     return response.Result;
                 }
                 else
