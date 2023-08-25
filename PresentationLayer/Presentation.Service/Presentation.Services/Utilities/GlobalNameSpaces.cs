@@ -1,0 +1,16 @@
+﻿global using AutoMapper;
+global using Common.Service.Features.Interface;
+global using CommonComponent.Application.Dtos.Request;
+global using CommonComponent.Application.Dtos.Response;
+global using Microsoft.Extensions.DependencyInjection;
+global using Presentation.Application.DependenecyInjection;
+global using Presentation.Application.Repository.Interface;
+global using Presentation.Domain.Entity;
+global using Presentation.Service.Dtos.CheckProfileStatus;
+global using Presentation.Service.Features.Concrete;
+global using Presentation.Services.Dtos.CheckProfileStatus;
+global using Presentation.Services.Features.Interface;
+global using System.Reflection;
+global using CommonComponent.Application.Enums;
+global using CommonComponent.Service.Features.Interface;
+global using Microsoft.AspNetCore.Mvc.Filters;

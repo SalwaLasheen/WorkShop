@@ -1,0 +1,93 @@
+<div class="container w-60 mt-4">
+ 
+  <div class="row">
+    <div class="col-md-3">
+      <img src="./assets/img/orange.png" alt="orange" height="60" width="50"/> 
+    </div>
+    </div>
+       <div class="col-10 row align-items-center">
+       
+           <h2>WorkShop: Call Check Profile Status Service</h2>
+      <hr class="line">
+
+    </div>
+
+  
+    <div class="card card-size ">
+      <h5 class="card-header h-25"></h5>
+      <div class="card-body border-secondary">
+        <div>
+          <div [formGroup]="formGroup">
+            <div>
+              <div class="row">
+                <div class="mb-3 mt-3">
+                  <div class="input-label">
+                    <small class="form-text text-muted label-style">Option Categorize</small>
+                    <div class="col-md-8">
+                      <select class="form-select form-select-sm text-muted shadow-sm  bg-white rounded mb-3 mt-2 border-success" 
+                      aria-label=".form-select-sm example" formControlName="DialOption" #select (change)="onChange(select.value)">
+                        <option selected value='01200000001' > Success with No Packege Included - have option</option>
+                        <option value='01200000002' > Technical Error with No Packege - no Option</option>
+                        <option value='01200000003' > Success with Packege Included - have Two option</option>
+                        <option value='01200000004' > Technical Error with Packege Included - no option</option>
+
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div>
+                    <div class="input-label">
+                      <small class="form-text text-muted label-style">Dial</small>
+
+                  <div class="col-md-8 ">
+                    <input  formControlName="Dial" autocomplete="off" required maxlength="20"
+                    class="form-control shadow-sm mb-3 bg-white rounded  border-success" />
+                  </div>
+                </div>
+                 <span *ngIf="Dial.errors?.invalidName" class="text-danger font-weight-bolder text-danger"> Dial Number inavlid</span>
+
+                     </div>
+                 
+                </div>
+                <div class="col-md-4">
+                  <div>
+                    <div>
+                      <div class="input-label">
+                      <small class="form-text text-muted label-style "> Source </small>
+                      <div class="col-md-7">
+                        <input  formControlName="SourceIdField" autocomplete="off" maxlength="2" 
+                          class="form-control shadow-sm  mb-3 bg-white rounded  border-success" />
+                      </div>
+                      </div>
+                    </div>
+                  </div>
+            
+                </div>
+                <div class="col-md-4">
+                  <div class="input-label">
+                    <small class="form-text text-muted label-style">Language</small>
+                    <div class="col-md-7">
+                      <input  formControlName="LangIdField" autocomplete="off" maxlength="1" 
+                        class="form-control shadow-sm  mb-3 bg-white rounded border-success"/>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+              <div class="m-3  mt-3 d-md-flex justify-content-md-end">
+                <button class="btn btn-md btn-primary m-1" (click)="Clear()">Clear</button>
+                <button class="btn btn-md btn-primary m-1"  (click)="AddNewProfile()">Save</button>
+              </div>
+            </div>
+          </div>
+          <div class="shadow p-3 mb-5 bg-body rounded ">
+            <div>
+              <h3 class="header-style ml-3 p-3"> Response  </h3>
+              <pre>{{ response | json }}</pre>
+          </div>  
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

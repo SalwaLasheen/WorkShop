@@ -1,0 +1,11 @@
+{
+  "solution": {
+    "path": "PresentationLayer.sln",
+    "projects": [
+      "..\\..\\WorkShop\\Services\\Presentation.Service.csproj",
+      "..\\..\\WorkShop\\WebApiProject\\WebApiProject.csproj",
+      "Presentation.Application\\Presentation.Application.csproj",
+      "Presentation.Domain\\Presentation.Domain.csproj"
+    ]
+  }
+}
