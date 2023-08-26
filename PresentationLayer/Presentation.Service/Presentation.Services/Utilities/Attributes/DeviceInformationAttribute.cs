@@ -1,4 +1,6 @@
-﻿namespace Presentation.Services.Utilities.Attributes
+﻿using Newtonsoft.Json.Linq;
+
+namespace Presentation.Services.Utilities.Attributes
 {
     public class DeviceInformationAttribute : ActionFilterAttribute
     {
@@ -12,6 +14,8 @@
             string appVersion = CheckHeaderValue(context, "appVersion") ? context.HttpContext.Request.Headers["appVersion"].ToString() : string.Empty;
             string osVersion = CheckHeaderValue(context, "osversion") ? context.HttpContext.Request.Headers["osversion"].ToString() : string.Empty;
             string isAndoriod = CheckHeaderValue(context, "isAndroid") ? context.HttpContext.Request.Headers["isAndroid"].ToString() : string.Empty;
+            var requestBody = context.ActionArguments.TryGetValue("request", out object request );
+            dynamic req = request;
             ActionLogSqlDto actionLog = new()
             {
                 ChannelName = Enum.GetName(typeof(Channels), Channels.OrangeCash).ToString(),
@@ -19,7 +23,8 @@
                 CreatedDate = DateTime.Now,
                 AppVersion = appVersion,
                 OsVersion = osVersion,
-                IsAndroid = isAndoriod.ToLower() == "true"
+                IsAndroid = isAndoriod.ToLower() == "true",
+               Dial= req != null?req.Dial:null
             };
             _serviceAudit.AddActionLog(actionLog);
             static bool CheckHeaderValue(ActionExecutingContext context, string value)

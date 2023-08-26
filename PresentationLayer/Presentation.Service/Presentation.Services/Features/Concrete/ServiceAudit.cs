@@ -1,6 +1,4 @@
-﻿using CommonComponent.Service.Features.Interface;
-
-namespace Presentation.Service.Features.Concrete
+﻿namespace Presentation.Service.Features.Concrete
 {
     public class ServiceAudit : IServiceAudit<ActionLogSqlDto>
     {
@@ -19,6 +17,9 @@ namespace Presentation.Service.Features.Concrete
             {
                 Dial = daial,
                 MethodName = "Check Data Profile Status",
+                CreatedDate = DateTime.Now,
+                ErrorCode = responseDto.ErrorDoc.ErrorCode,
+                ErrorMessage = responseDto.ErrorDoc.ErrorMessage
 
             };
             var entity = _mapper.Map<SqlResponseDto, SqlResponseEntity>(sqlResponseDto);

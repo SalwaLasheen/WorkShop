@@ -6,9 +6,9 @@ namespace CommonComponent.Application.Dtos.Request
     {
         public string Dial { get; set; }
 
-        public string SourceIdField { get; set; }
+        public string SourceId { get; set; }
 
-        public string LangIdField { get; set; }
+        public string LangId { get; set; }
 
         [JsonIgnore]
         public DateTime? CreatedDate { get; set; } = DateTime.Now;
