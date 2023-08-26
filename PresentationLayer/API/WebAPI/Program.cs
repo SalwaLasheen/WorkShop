@@ -17,13 +17,13 @@ builder.Services.AddHttpClient("WsdlService", httpClient =>
 });
 
 builder.Services.AddServiceInjection(builder.Configuration);
+string frontUrl = builder.Configuration.GetSection("FrontBaseURL").Value.ToString();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: "AllowOrigin",
         builder =>
         {
-            //Angular URL
-            string frontUrl = builder.Configuration.GetSection("FrontBaseURL").Value.ToString();
+            //Angular URL   
             builder.WithOrigins(frontUrl)
                                 .AllowAnyHeader()
                                 .AllowAnyMethod();
