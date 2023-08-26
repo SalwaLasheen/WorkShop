@@ -14,3 +14,4 @@ global using Secure.Service.Features.Interface;
 global using Secure.Service.Features.Mocking;
 global using System.Reflection;
 global using WsdlServiceReference;
+global using Secure.Application.Dtos;

@@ -1,11 +1,9 @@
-﻿using Secure.Application.Dtos;
-
-namespace Secure.Service.Features.Concrete
+﻿namespace Secure.Service.Features.Concrete
 {
     public class MongoServiceAudit : IServiceAudit<MongoAuditLogDto>
     {
         private readonly IMapper _mapper;
-        public readonly IMongoRepository<MongoAuditLogEntity> _repositryLogMongo;
+        private readonly IMongoRepository<MongoAuditLogEntity> _repositryLogMongo;
         public MongoServiceAudit(IMapper mapper, IMongoRepository<MongoAuditLogEntity> repositryLogMongo)
         {
             _mapper = mapper;
@@ -35,7 +33,7 @@ namespace Secure.Service.Features.Concrete
                 CreatedDate = DateTime.Now,
                 Request = request,
                 Response = response,
-                ResponseTime = DateTime.Now.ToString(),
+                ResponseTime = DateTime.Now.ToString("HH:mm:ss"),
             };
         }
 

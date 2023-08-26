@@ -1,6 +1,4 @@
-﻿using Secure.Application.Dtos;
-
-namespace Secure.Service.Features.Mapping
+﻿namespace Secure.Service.Features.Mapping
 {
     public class ProfileConfiguration : Profile
     {
@@ -21,7 +19,7 @@ namespace Secure.Service.Features.Mapping
                 .ForMember(src => src.ErrorMessage, conf => conf.MapFrom(dto => dto.ErrorDoc))
              .ForMember(src => src.ErrorCode, conf => conf.MapFrom(dto => dto.ErrorDoc.ErrorCode))
               .ForMember(src => src.Status, conf => conf.MapFrom(dto => dto.ErrorDoc.Status))
-             .ForMember(src => src.BucketId, conf => conf.MapFrom(dto => dto.BucketInfo.Select(x=>x.CurrentBucketId).FirstOrDefault()))
+             .ForMember(src => src.BucketId, conf => conf.MapFrom(dto => dto.BucketInfo.Select(x => x.CurrentBucketId).FirstOrDefault()))
             .ForMember(src => src.BucketName, conf => conf.MapFrom(dto => dto.BucketInfo.Select(x => x.CurrentBucketName).FirstOrDefault()))
             .ForMember(src => src.RnRText, conf => conf.MapFrom(dto => dto.BucketInfo.Select(x => x.RnRText).FirstOrDefault()))
             .ForMember(src => src.IsRnR, conf => conf.MapFrom(dto => dto.BucketInfo.Select(x => x.IsRnR).FirstOrDefault()))

@@ -3,55 +3,58 @@
     public class WsdlClientMock : IWsdlClient
     {
         private readonly IWsdlRepositry _repository;
-        private readonly IMapper _mapper;
-        public WsdlClientMock(IWsdlRepositry repository, IMapper mapper)
+      //  private readonly IMapper _mapper;
+        public WsdlClientMock(IWsdlRepositry repository)
         {
             _repository = repository;
-            _mapper = mapper;
+           // _mapper = mapper;
         }
 
         public Task<CheckProfileStatusResponseDto> CallWSDLMock(CheckProfileStatusRequestDto requestDto)
         {
-            var response = _repository.GetResponseByDial(requestDto.Dial).Result;
-            //var mappingResponse= _mapper.Map<ResponseWsdl, CheckProfileStatusResponseDto>(response);
-            //  return Task.FromResult( mappingResponse);
-            return Task.FromResult(ReturnWsdlStatusOut(response.ErrorCode, response.ErrorMessage, response.Status, response.IsRnR, response.RnRText, response.BucketId, response.BucketName, response));
+            var responseWsdls = _repository.GetResponseByDial(requestDto.Dial).Result;
+            var response = responseWsdls?.FirstOrDefault();
+            if (response is not null)
+            {
+                var responseDto = ReturnWsdlStatusOut(response.ErrorCode, response.ErrorMessage, response.Status, response.IsRnR, response.RnRText, response.BucketId, response.BucketName, responseWsdls);
+                return Task.FromResult(responseDto);
+            }
+            return Task.FromResult(new CheckProfileStatusResponseDto());
         }
 
-        private CheckProfileStatusResponseDto ReturnWsdlStatusOut(string errorCode, string errorMessage, int? status, bool? isRnR, string rnRText, int? bucketId, string bucketName, ResponseWsdl response)
+        private CheckProfileStatusResponseDto ReturnWsdlStatusOut(string errorCode, string errorMessage, int? status, bool? isRnR, string rnRText, int? bucketId, string bucketName, List<ResponseWsdl> responseWsdls)
         {
-            CheckProfileStatusResponseDto dto = new CheckProfileStatusResponseDto()
+            CheckProfileStatusResponseDto responseDto = new()
             {
                 ErrorDoc = new ErrorDocDto
                 {
                     ErrorCode = errorCode,
                     ErrorMessage = errorMessage,
-                    Status = status != null ? status.ToString() : "0"
+                    Status = status.ToString()
                 },
-                ResponseTime = DateTime.Now.TimeOfDay.ToString(),
+                ResponseTime = DateTime.Now.ToString("HH:mm:ss"),
                 BucketInfo = new BucketInfoDto[] {
                     new BucketInfoDto
                 {
-                    CurrentBucketId = bucketId != null? bucketId.ToString():null,
+                    CurrentBucketId = bucketId.ToString(),
                     CurrentBucketName = bucketName,
-                    IsRnR= isRnR!=null? isRnR.ToString():"false",
+                    IsRnR= isRnR.ToString(),
                     RnRText= rnRText,
-                    OptionsList=GetOptionsValue(response),
+                    OptionsList=GetOptionsValue(responseWsdls),
 
-                    }
-            }
-
-
-            };
-            return dto;
+                }
+            }};
+            return responseDto;
         }
 
-        private static OptionsListDto[] GetOptionsValue(ResponseWsdl response)
+        private  OptionsListDto[] GetOptionsValue(List<ResponseWsdl> responseWsdls)
         {
             var options = new List<OptionsListDto>();
-            foreach (var option in response.OptionsList)
+            foreach (var response in responseWsdls)
             {
-                options.AddRange(new List<OptionsListDto>
+                foreach (var option in response.OptionsList)
+                {
+                    options.AddRange(new List<OptionsListDto>
                 {
                     new OptionsListDto
                     {
@@ -59,11 +62,11 @@
                         OptionName=option.OptionName
                     }
                 });
+                }
+
             }
             return options.ToArray();
-
         }
-
     }
 }
 

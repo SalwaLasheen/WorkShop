@@ -3,33 +3,43 @@
     public class WsdlServiceHelper : IWsdlServiceHelper
     {
         public readonly IWsdlClient _client;
+      //  public readonly IServiceAudit<MongoAuditLogEntity> _ServiceAudit;
         public IMapper _mapper;
         public IConfiguration _configuration;
         public WsdlServiceHelper(IMapper mapper, IWsdlClient client, IConfiguration configuration)
         {
             _mapper = mapper;
+            //_ServiceAudit = serviceAudit;
             _client = client;
             _configuration = configuration;
+     
         }
 
         public async Task<CheckProfileStatusResponseDto> GetWsdlClientResponseAsync(CheckProfileStatusRequestDto requestDto)
         {
             try
             {
-                var isTestingFlage = _configuration.GetSection("IsTestingEnvironment").Value;
+                var response = new CheckProfileStatusResponseDto(); 
+               var isTestingFlage = _configuration.GetSection("IsTestingEnvironment").Value;
                 bool isTetingEnv = isTestingFlage.ToLower() == "true";
+              
                 if (isTetingEnv)
                 {
-                    var response = GetMockWsdlResponse(requestDto);
+                     response = await GetMockWsdlResponse(requestDto);
                     if (response is null)
                     {
-                       return await GetWsdlResponse(requestDto);
+                        response= await GetWsdlResponse(requestDto);
+                      //  _ServiceAudit.AddAuditLogMongo(response, requestDto);
+                        return response;
                     }
-                    return response.Result;
+                   // _ServiceAudit.AddAuditLogMongo(response, requestDto);
+                    return response;
                 }
                 else
                 {
-                    return await GetWsdlResponse(requestDto);
+                    response = await GetWsdlResponse(requestDto);
+                  //  _ServiceAudit.AddAuditLogMongo(response, requestDto);
+                    return response;
                 }
 
 

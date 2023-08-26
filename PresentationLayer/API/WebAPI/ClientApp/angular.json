@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "WebApiProject": {
+    "WebAPI": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -40,8 +40,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "1mb",
+                  "maximumError": "2mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -72,10 +72,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "WebApiProject:build:production"
+              "browserTarget": "WebAPI:build:production"
             },
             "development": {
-              "browserTarget": "WebApiProject:build:development",
+              "browserTarget": "WebAPI:build:development",
               "proxyConfig": "proxy.conf.js"
             }
           },
@@ -84,7 +84,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "WebApiProject:build"
+            "browserTarget": "WebAPI:build"
           }
         },
         "test": {
@@ -132,8 +132,8 @@
       }
     }
   },
-  "defaultProject": "WebApiProject",
+  "defaultProject": "WebAPI",
   "cli": {
-    "analytics": "b711c1bf-91c8-46ff-808d-fc67486d8114"
+    "analytics": false
   }
 }

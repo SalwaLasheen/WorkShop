@@ -1,7 +1,4 @@
-﻿using CommonComponent.Service.Features.Interface;
-using Secure.Application.Dtos;
-
-namespace Secure.Service.DependenecyInjection
+﻿namespace Secure.Service.DependenecyInjection
 {
     public static class DependencyInjection
     {
@@ -11,7 +8,8 @@ namespace Secure.Service.DependenecyInjection
             services.AddInfrastructure(configuration);
             var testingEnvironment = configuration.GetSection("IsTestingEnvironment").Value.ToString();
             var istestingEnvironment = testingEnvironment.ToLower() == "true";
-           
+            services.AddTransient<IServiceAudit<MongoAuditLogDto>, MongoServiceAudit>();
+
             if (!istestingEnvironment)
             {
                 services.AddScoped<IWsdlClient, WsdlClient>();
@@ -21,8 +19,7 @@ namespace Secure.Service.DependenecyInjection
                 //Mocking
                 services.AddScoped<IWsdlClient, WsdlClientMock>();
             }
-            services.AddScoped<IWsdlServiceHelper, WsdlServiceHelper>();
-            services.AddScoped<IServiceAudit<MongoAuditLogDto>, MongoServiceAudit>();
+                 services.AddTransient<IWsdlServiceHelper, WsdlServiceHelper>();
             services.AddScoped<Adapter>();
             return services;
         }

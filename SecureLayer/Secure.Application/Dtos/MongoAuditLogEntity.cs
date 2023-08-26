@@ -7,6 +7,6 @@
         public string Request { get; set; }
         public string Response { get; set; }
         public DateTime? CreatedDate { get; set; } = DateTime.Now;
-        public string ResponseTime { get; set; } = DateTime.Now.TimeOfDay.ToString();
+        public string ResponseTime { get; set; } = DateTime.Now.ToString("HH:mm:ss");
     }
 }

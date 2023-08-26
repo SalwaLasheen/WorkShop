@@ -1,10 +1,4 @@
-﻿ using Microsoft.Extensions.Configuration;
-using CommonComponent.Service.Features.Concrete;
-using CommonComponent.Service.Features.Interface;
-using Presentation.Services.Features.Interface;
-using Presentation.Services.Utilities.Attributes;
-
-namespace Presentation.Service.DependenecyInjection
+﻿namespace Presentation.Service.DependenecyInjection
 {
     public static class DependencyInjection
     {

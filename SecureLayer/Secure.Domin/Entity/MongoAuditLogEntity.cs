@@ -6,6 +6,8 @@
         [BsonId]
         [BsonRepresentation(BsonType.String)]
         public ObjectId Id { get; set; }
+        public string ChannelName { get; set; }
+        public string MethodName { get; set; }
         public string Request { get; set; }
         public string Response { get; set; }
         [BsonRepresentation(BsonType.DateTime)]

@@ -1,9 +1,3 @@
-using CommonComponent.Application.Dtos.Request;
-using CommonComponent.Application.Dtos.Response;
-using CommonComponent.Service.Features.Interface;
-using Presentation.Services.Features.Interface;
-using Presentation.Services.Utilities.Attributes;
-
 namespace WebAPI.Controllers
 {
     [ApiController]

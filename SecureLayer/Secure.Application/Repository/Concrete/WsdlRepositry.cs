@@ -30,10 +30,11 @@ namespace Secure.Application.Repository.Concrete
             }
         }
 
-        public Task<ResponseWsdl> GetResponseByDial(string dial)
+        public Task<List<ResponseWsdl>> GetResponseByDial(string dial)
         {
-            var response = _sqlcontext.ResponseWsdls.Include(x=>x.OptionsList).ToList();
-            return Task.FromResult(response.FirstOrDefault());
+            var responseWsdls = _sqlcontext.ResponseWsdls.Include(x => x.OptionsList).ToList();
+            var response = responseWsdls.Where(x => x.Dial == dial).ToList();
+            return Task.FromResult(response);
 
         }
     }

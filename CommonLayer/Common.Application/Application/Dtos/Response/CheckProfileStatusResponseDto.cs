@@ -9,7 +9,7 @@ namespace CommonComponent.Application.Dtos.Response
         public ErrorDocDto ErrorDoc { get; set; }
         [NotMapped]
         [JsonIgnore]
-        public string ResponseTime { get; set; } = DateTime.Now.TimeOfDay.ToString();
+        public string ResponseTime { get; set; } = DateTime.Now.ToString("HH:mm:ss");
     }
     public class BucketInfoDto
     {

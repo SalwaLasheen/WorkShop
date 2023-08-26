@@ -2,8 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { CheckProfileStatusResponseModel } from '../_models/CheckProfileStatusResponseModel';
-
 
 const baseUrl = `${environment.apiUrl}/ProfileStatus/CallWsdlApiAsync`;
 //

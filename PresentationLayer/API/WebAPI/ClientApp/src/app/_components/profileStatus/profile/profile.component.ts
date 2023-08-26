@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ToastrService } from 'ngx-toastr';
+
 import { ProfileService } from 'src/app/_services/profile.service';
 
 @Component({
@@ -18,7 +18,6 @@ export class ProfileComponent implements OnInit {
   response: any;
 
   constructor(private fb: FormBuilder,
-    private toastr: ToastrService,
     public service: ProfileService) {
   }
 
@@ -48,11 +47,11 @@ export class ProfileComponent implements OnInit {
     const dial=this.formGroup.controls['DialOption'].value;
     this.formGroup.controls['Dial'].setValue(dial);
     return this.service.createNewProfile(this.formGroup.value)
-      .subscribe((res) => {
+      .subscribe((res: any): void => {
        this.response=res;
         this.showToasterSuccess("Successfully Posted");
       },
-        err => {
+        (err: any): void => {
           console.log(err);
           this.showToasterError(err.error);
         });
@@ -62,11 +61,11 @@ export class ProfileComponent implements OnInit {
       return this.showToasterError('Invalid Dial Number');
   }
   showToasterError(message: string) {
-   return this.toastr.error(message)
+   //return this.toastr.error(message)
   }
 
   public showToasterSuccess(message: string) {
-   return this.toastr.success(message)
+   //return this.toastr.success(message)
   }
   onChange(value: any) {
   {
