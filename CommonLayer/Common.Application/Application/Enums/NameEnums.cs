@@ -1,4 +1,7 @@
-﻿namespace CommonComponent.Application.Enums
+﻿using System.ComponentModel.DataAnnotations;
+using System.Xml.Linq;
+
+namespace CommonComponent.Application.Enums
 {
     public enum Methods
     {
@@ -6,8 +9,14 @@
     }
     public enum Channels
     {
-        OrangeCash,
-        Portal,
-        MyOrange
+        OrangeCash=28,
+        Portal=34,
+        MyOrange=30
+    }
+    public enum Languages
+    {
+      
+        English=1,
+        Arabic=2
     }
 }

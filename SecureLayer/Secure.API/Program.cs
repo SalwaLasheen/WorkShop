@@ -9,6 +9,7 @@ builder.Services.AddServiceInjection(builder.Configuration);
 builder.Services.AddControllers().AddJsonOptions(options =>
 {
     options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
+options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
 });
 var app = builder.Build();
 

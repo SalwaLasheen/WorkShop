@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using CommonComponent.Application.Enums;
+using System.Text.Json.Serialization;
 
 namespace CommonComponent.Application.Dtos.Request
 {
@@ -6,9 +7,9 @@ namespace CommonComponent.Application.Dtos.Request
     {
         public string Dial { get; set; }
 
-        public string SourceId { get; set; }
+        public Channels Channel { get; set; }
 
-        public string LangId { get; set; }
+        public Languages Language { get; set; }
 
         [JsonIgnore]
         public DateTime? CreatedDate { get; set; } = DateTime.Now;

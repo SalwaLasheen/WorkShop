@@ -16,6 +16,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{4CE0463A-E80F-4968-9272-FC4D0015C99F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{7BB089AB-CCA7-49A8-BA64-156621EE3597}"
+	ProjectSection(SolutionItems) = preProject
+		WsdlClient\WsdlClient.csproj = WsdlClient\WsdlClient.csproj
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Secure.API", "Secure.API\Secure.API.csproj", "{8DD1DC5D-B3D8-4029-84D1-E7FCC124D03C}"
 EndProject

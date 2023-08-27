@@ -33,7 +33,7 @@
                 CreatedDate = DateTime.Now,
                 Request = request,
                 Response = response,
-                ResponseTime = DateTime.Now.ToString("HH:mm:ss"),
+                ResponseTime = DateTime.Now.ToString("ss.fff"),
             };
         }
 

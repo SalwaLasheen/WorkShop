@@ -10,7 +10,7 @@ builder.Services.AddControllers().AddJsonOptions(options =>
 });
 //CALL CLIENT
 string baseUrl = builder.Configuration.GetSection("ClientBaseURl").Value.ToString();
-builder.Services.AddHttpClient("WsdlService", httpClient =>
+builder.Services.AddHttpClient("HttpClientFactory", httpClient =>
 {
     httpClient.BaseAddress = new Uri(baseUrl);
     httpClient.DefaultRequestHeaders.Add("Accept", "application/json");

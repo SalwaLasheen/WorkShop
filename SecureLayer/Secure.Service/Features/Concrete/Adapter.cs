@@ -15,7 +15,7 @@
         public CheckProfileStatusResponseDto AdapterResponse(checkDataProfileStatus_out status_Out)
         {
             var response = _mapper.Map<checkDataProfileStatus_out, CheckProfileStatusResponseDto>(status_Out);
-            response.ResponseTime = DateTime.Now.ToString("HH:mm:ss");
+            response.ResponseTime = DateTime.Now.ToString("ss.fff");
             return response;
         }
     }

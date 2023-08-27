@@ -32,7 +32,7 @@
                     ErrorMessage = errorMessage,
                     Status = status.ToString()
                 },
-                ResponseTime = DateTime.Now.ToString("HH:mm:ss"),
+                ResponseTime = DateTime.Now.ToString("ss.fff"),
                 BucketInfo = new BucketInfoDto[] {
                     new BucketInfoDto
                 {

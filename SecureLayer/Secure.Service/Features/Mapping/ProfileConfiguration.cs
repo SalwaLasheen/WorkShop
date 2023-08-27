@@ -7,8 +7,8 @@
             CreateMap<MongoAuditLogEntity, MongoAuditLogDto>().ReverseMap();
             CreateMap<checkDataProfileStatus_in, CheckProfileStatusRequestDto>().ReverseMap()
                 .ForMember(src => src.dial, conf => conf.MapFrom(dto => dto.Dial))
-                  .ForMember(src => src.sourceId, conf => conf.MapFrom(dto => dto.SourceId))
-                  .ForMember(src => src.langId, conf => conf.MapFrom(dto => dto.LangId));
+                  .ForMember(src => src.sourceId, conf => conf.MapFrom(dto =>Convert.ToInt16(dto.Channel)))
+                  .ForMember(src => src.langId, conf => conf.MapFrom(dto => Convert.ToInt16(dto.Language)));
             CreateMap<checkDataProfileStatus_out, CheckProfileStatusResponseDto>().ReverseMap()
                 .ForMember(src => src.errorDoc, conf => conf.MapFrom(dto => dto.ErrorDoc))
              .ForMember(src => src.BucketInfo, conf => conf.MapFrom(dto => dto.BucketInfo));

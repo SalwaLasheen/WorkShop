@@ -18,7 +18,7 @@ namespace CommonComponent.Service.Features.Concrete
             try
             {
 
-                var httpClient = _httpClientFactory.CreateClient("WsdlService");
+                var httpClient = _httpClientFactory.CreateClient("HttpClientFactory");
                 //requestMessage 
                 var request = Handler.HTTPRequestMessage(requestDto, httpClient);
                 var httpResponseMessage = await httpClient.SendAsync(request);
